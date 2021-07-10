@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Nauka React</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+
+    <div id="app"></div>
+
+    <script type="text/babel">
+
+        const Names = () => {
+            const names = ['Ania', 'Łukasz', 'Marek']
+            const namesList = names.map(name => <li>{name}</li>)
+            const showNames = true
+
+            return <div>
+                {showNames ? <ul> {namesList}  </ul> : null}
+            </div>
+        }
+
+
+        class Headline extends React.Component {
+            state = {
+                title: 'ReactJS'
+            }
+            render() {
+                const changeTitle = () => {
+                    console.log('changing the title...')
+                    this.setState({ title: 'pracowników' })
+                }
+
+                return <div>
+                    <h1> Lista {this.state.title} </h1><p> . . . </p>
+                    <Names />
+                    <button onClick={changeTitle}> Change title </button>
+                </div>
+            }
+        }
+
+        ReactDOM.render(<Headline />,
+            document.querySelector('#app'))
+    </script>
+</body>
+
+
+</html>
